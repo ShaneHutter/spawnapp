@@ -1,0 +1,70 @@
+#!/usr/bin/env python
+"""
+spawnapp.py
+    0.0.0-1
+
+    Written By:
+        Shane Hutter
+
+    Spawns a new python virtual environment.
+"""
+
+from spawnapp       import (
+        PROJECT , PARSER    ,
+        )
+
+# remove dep and call from spawnapp.system
+from ICStk.shell    import shell_exec
+
+from arparge        import ArgumentParser
+from sys            import exit
+
+
+
+
+def parse_args( parser ):
+    """
+        Parse arguments
+        Recieves an ArgumentParser
+
+        --flask,        setup flask application
+        --import,       import a other project, recieves project/setup.py
+        --external,     If thrown, read setup.py info directly, instead of
+                        reading from PROJECT dictionary in setup.py.  
+                        Requires import.  The imported project uses external
+                        methods in the setup.py
+    """
+    parser.add_argument(
+            'virtenv_proj_name'                         ,
+            help                = "New project name"    ,
+            )
+
+
+
+    python_version  = parser.add_mutually_exclusive_group()
+    return {}
+
+
+def main():
+    """
+        Main code block
+        Recives keywords from arguments
+    """
+
+
+if __name__ == '__main__':
+    if PROJECT[ "debug" ]:
+        main(
+            parse_args(
+                ArgumentParser( **PARSER )
+                    )
+                )
+    else:
+        try:
+            main(
+                parse_args(
+                    ArgumentParser( **PARSER )
+                        )
+                )
+        except Exception as error:
+            exit( error )
